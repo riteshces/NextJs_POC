@@ -6,14 +6,14 @@ export const metadata: Metadata = {
   description: "CES POC",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
+interface AuthLayoutProps {
   children: React.ReactNode;
-}>) {
+}
+
+export default function AuthLayout({ children }: AuthLayoutProps) {
   return (
-    <html className="h-full bg-gray-100" lang="en">
-      <body className="h-full">{children}</body>
+    <html>
+      <body>{children}</body>
     </html>
   );
 }
