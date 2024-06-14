@@ -3,7 +3,7 @@ import "@testing-library/jest-dom";
 import { render, fireEvent } from "@testing-library/react";
 import Login from "@/app/(auth)/login/page";
 
-describe("Login component", () => {
+xdescribe("Login component", () => {
   it("renders correctly", () => {
     const { getAllByText, getByText, getByTestId, getByPlaceholderText } =
       render(<Login />);

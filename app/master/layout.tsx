@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "@/app/globals.css";
 import Navbar from "@/app/components/navbar/navbar";
+import ToastProvider from "@/app/components/toastify/toastify";
 
 export const metadata: Metadata = {
   title: "CES POC",
@@ -214,7 +215,7 @@ export default function Layout({
               </div>
             </div>
           </nav>
-          {children}
+          <ToastProvider>{children}</ToastProvider>
         </div>
       </body>
     </html>
