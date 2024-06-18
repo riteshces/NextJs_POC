@@ -1,8 +1,9 @@
 "use client";
-import { addProduct } from "@/app/master/products/product-action";
+import { addProduct } from "@/app/lib/actions/product-action";
 import { useFormStatus, useFormState } from "react-dom";
 import { toast } from "react-toastify";
 import { redirect } from "next/navigation";
+import Link from "next/link";
 
 const initialState = {
   message: "",
@@ -113,6 +114,13 @@ function AddProduct() {
         >
           Add Product
         </button>
+
+        <Link
+          href="/master/products"
+          className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 mx-7 rounded"
+        >
+          Back
+        </Link>
       </form>
     </div>
   );
