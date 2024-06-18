@@ -19,16 +19,18 @@ const Login = () => {
     try {
       const loginResult = await authenticate(formData);
       if (loginResult) {
-        if (typeof loginResult === "string") {
-          if (loginResult === "Authentication successful.") {
-            router.push("/dashboard");
-          } else {
-            setErrors(loginResult);
-          }
+        if (
+          typeof loginResult === "string" &&
+          loginResult === "Authentication successful."
+        ) {
+          router.push("/dashboard");
         } else {
-          setErrors({ errors: loginResult.errors });
+          const errorsArray =
+            typeof loginResult === "string"
+              ? [loginResult]
+              : loginResult.errors || [];
+          setErrors({ errors: errorsArray });
         }
-        return;
       }
     } catch (error) {
       console.error("Authentication failed:", error);
