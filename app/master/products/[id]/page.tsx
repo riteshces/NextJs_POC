@@ -1,19 +1,31 @@
 import Link from "next/link";
-const ProductDetails = ({ params }: { params: { id: string } }) => {
+import { getData } from "@/app/lib/services/http-services";
+import { Product } from "@/app/lib/interfaces/products";
+
+export default async function ProductDetails({
+  params,
+}: {
+  params: { id: string };
+}) {
+  const productUrl =
+    `${process.env.NEXT_APP_PRODUCTSAPI}/products/` + params.id;
+
+  const data: Product = await getData(productUrl);
+
   return (
     <div className="max-w mx-auto bg-white rounded-xl shadow-md overflow-hidden">
       <div className="flex pt-6">
         <img
-          src="product-image.jpg"
-          alt="Product Image"
+          src={data.image}
+          alt={data.title}
           className="h-48 w-48 rounded-full object-cover"
         />
       </div>
       <div className="px-6 py-4">
-        <h2 className="text-lg font-bold text-gray-900">Product 1</h2>
-        <p className="text-gray-600">Product Description</p>
-        <p className="text-lg font-bold text-gray-900">Price: $10.99</p>
-        <p className="text-gray-600">Category: Electronics</p>
+        <h2 className="text-lg font-bold text-gray-900">{data.title}</h2>
+        <p className="text-gray-600">{data.description}</p>
+        <p className="text-lg font-bold text-gray-900">Price: {data.price}$</p>
+        <p className="text-gray-600">Category: {data.category}</p>
 
         <Link
           href="/master/products"
@@ -24,6 +36,4 @@ const ProductDetails = ({ params }: { params: { id: string } }) => {
       </div>
     </div>
   );
-};
-
-export default ProductDetails;
+}
