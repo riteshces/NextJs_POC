@@ -1,11 +1,8 @@
 import Link from "next/link";
 import { getData } from "@/app/lib/services/http-services";
 import { urls } from "@/app/lib/constants/url-constants";
-import { Product as Products } from "@/app/_interfaces/products";
+import { Product as Products } from "@/app/lib/interfaces/products";
 import { Suspense } from "react";
-
-export const fetchCache = "auto";
-export const revalidate = 3600;
 
 export default async function ProductList() {
   const url = `${process.env.NEXT_APP_PRODUCTSAPI}/products`;
@@ -15,10 +12,19 @@ export default async function ProductList() {
       <>
         <header className="bg-white shadow">
           <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-            <h1 className="text-3xl font-bold tracking-tight text-gray-900">
-              Products
-            </h1>
-            <Link href={"/master/products/add"}>Add new product</Link>
+            <div className="mb-4">
+              <h1 className="text-3xl font-bold tracking-tight text-gray-900">
+                Products
+              </h1>
+            </div>
+            <div className="mb-4">
+              <Link
+                href={"/master/products/add"}
+                className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded"
+              >
+                Add new product
+              </Link>
+            </div>
           </div>
         </header>
         <main>

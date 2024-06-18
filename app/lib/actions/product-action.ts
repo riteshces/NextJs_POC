@@ -2,7 +2,7 @@
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import { postData } from "@/app/lib/services/http-services";
-import { Product } from "@/app/_interfaces/products";
+import { Product } from "@/app/lib/interfaces/products";
 
 export async function addProduct(prevState: any, formData: FormData) {
   const schema = z.object({

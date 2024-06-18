@@ -1,8 +1,6 @@
 import Link from "next/link";
 import { getData } from "@/app/lib/services/http-services";
-import { Product } from "@/app/_interfaces/products";
-
-export const revalidate = 3600;
+import { Product } from "@/app/lib/interfaces/products";
 
 export default async function ProductDetails({
   params,

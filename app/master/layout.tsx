@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "@/app/globals.css";
 import Navbar from "@/app/components/navbar/navbar";
 import ToastProvider from "@/app/components/toastify/toastify";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "CES POC",
@@ -22,10 +23,12 @@ export default function Layout({
               <div className="flex h-16 items-center justify-between">
                 <div className="flex items-center">
                   <div className="flex-shrink-0">
-                    <img
+                    <Image
                       className="h-8 w-8"
                       src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-                      alt="Your Company"
+                      alt="CES IT"
+                      width={500}
+                      height={500}
                     />
                   </div>
                   <div className="hidden md:block">
